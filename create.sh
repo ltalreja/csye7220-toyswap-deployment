@@ -106,9 +106,11 @@ kubectl create -f ./deployments/monitoring/prometheus-service.yaml --namespace=m
 printf -- '\033[33m *** Retrieving service in monitoring namespace  *** \033[0m\n';
 sleep 20 &&
 kubectl get svc --namespace=monitoring &&
+kubectl apply -f ./deployments/kube-state-metrics-configs/ &&
 
 # Grafana Dashboard Setup 
 printf -- '\033[32m *** Grafana Dashboard Setup  *** \033[0m\n';
+sleep 20 &&
 printf -- '\033[33m *** Creating config for grafana *** \033[0m\n';
 kubectl create -f ./deployments/monitoring/grafana-datasource-config.yaml &&
 printf -- '\033[33m *** Deploying grafana *** \033[0m\n';
