@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: toyswap-exchange
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: toyswap-exchange
+    spec:
+      containers:
+        - image: "pratikpatil1234/toyswapapp:2"
+          imagePullPolicy: Always
+          name: toyswap-exchange
+          ports:
+            - containerPort: 8080

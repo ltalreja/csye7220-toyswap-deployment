@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toyswap-frontend
+spec:
+  selector:
+    matchLabels:
+      app: toyswap-frontend
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: toyswap-frontend
+    spec:
+      containers:
+        - image: ltalreja/toyswap-frontend:v2
+          imagePullPolicy: Always
+          name: toyswap-frontend
+          ports:
+            - containerPort: 3000
