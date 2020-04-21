@@ -5,3 +5,5 @@ This repository contains the deployment config files for the following
 - Backend Toy exchange application
 - Backend User registration
 
+To create the cluster and deply the services 
+execute the create.sh script
