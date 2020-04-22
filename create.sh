@@ -106,9 +106,19 @@ kubectl create -f ./deployments/monitoring/prometheus-service.yaml --namespace=m
 printf -- '\033[33m *** Retrieving service in monitoring namespace  *** \033[0m\n';
 sleep 20 &&
 kubectl get svc --namespace=monitoring &&
+kubectl apply -f ./deployments/kube-state-metrics-configs/ &&
+sleep 5 &&
+kubectl create -f ./deployments/alert-manager/AlertManagerConfigmap.yaml &&
+sleep 5 &&
+kubectl create -f ./deployments/alert-manager/AlertTemplateConfigMap.yaml &&
+sleep 5 &&
+kubectl create -f ./deployments/alert-manager/AlertManagerDeployment.yaml &&
+sleep 5 &&
+kubectl create -f ./deployments/alert-manager/AlertManagerService.yaml &&
 
 # Grafana Dashboard Setup 
 printf -- '\033[32m *** Grafana Dashboard Setup  *** \033[0m\n';
+sleep 20 &&
 printf -- '\033[33m *** Creating config for grafana *** \033[0m\n';
 kubectl create -f ./deployments/monitoring/grafana-datasource-config.yaml &&
 printf -- '\033[33m *** Deploying grafana *** \033[0m\n';
@@ -119,9 +129,15 @@ printf -- '\033[33m *** Retrieving service in monitoring namespace *** \033[0m\n
 sleep 20 &&
 kubectl get svc --namespace=monitoring &&
 
-printf -- '\033[33m *** Update Route53 *** \033[0m\n';
-kubectl get ingress toyswap-ingress &&
+printf -- '\033[33m *** Updated Route53 *** \033[0m\n';
+kubectl get svc nginx-ingress-controller &&
 printf -- '\033[33m *** Access Frontend *** \033[0m\n';
-kubectl get svc toyswap-frontend
+kubectl get svc toyswap-frontend &&
+printf -- '\033[33m *** Access Prometheus *** \033[0m\n';
+kubectl get svc prometheus-service -n monitoring &&
+printf -- '\033[33m *** Access AlertManager	 *** \033[0m\n';
+kubectl get svc alertmanager -n monitoring &&
+printf -- '\033[33m *** Access Grafana *** \033[0m\n';
+kubectl get svc grafana -n monitoring
 
 printf -- '\033[32m *** Completed *** \033[0m\n';

@@ -19,7 +19,7 @@ spec:
         app: toyswap-frontend
     spec:
       containers:
-        - image: ltalreja/toyswap-frontend:v2
+        - image: ltalreja/toyswap-frontend:v8
           imagePullPolicy: Always
           name: toyswap-frontend
           ports:
