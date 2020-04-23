@@ -24,16 +24,12 @@ data:
     receivers:
     - name: alert-emailer
       email_configs:
-      - to: ltalreja@gmail.com
+      - to: demo@devopscube.com
         send_resolved: false
-        from: the.resume.builder.app@gmail.com
-        smarthost: smtp.eample.com:587
-        auth_username: the.resume.builder.app@gmail.com
-        auth_password: Abc@1234
-        auth_secret: the.resume.builder.app@gmail.com
-        auth_identity: the.resume.builder.app@gmail.com
+        from: from-email@email.com
+        smarthost: smtp.eample.com:25
         require_tls: false
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
+      - api_url: https://hooks.slack.com/services/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
         channel: '#alerts-group4'
