@@ -106,7 +106,17 @@ kubectl create -f ./deployments/monitoring/prometheus-service.yaml --namespace=m
 printf -- '\033[33m *** Retrieving service in monitoring namespace  *** \033[0m\n';
 sleep 20 &&
 kubectl get svc --namespace=monitoring &&
-kubectl apply -f ./deployments/kube-state-metrics-configs/ &&
+sleep 5 &&
+printf -- '\033[33m *** Installing Kube State Metrics  *** \033[0m\n';
+kubectl apply -f ./deployments/monitoring/ks-cluster-role.yaml &&
+sleep 5 &&
+kubectl apply -f ./deployments/monitoring/ks-cluster-role-binding.yaml &&
+sleep 5 &&
+kubectl apply -f ./deployments/monitoring/ks-deployment.yaml &&
+sleep 5 &&
+kubectl apply -f ./deployments/monitoring/ks-service-account.yaml &&
+sleep 5 &&
+kubectl apply -f ./deployments/monitoring/ks-service.yaml &&
 sleep 5 &&
 kubectl create -f ./deployments/alert-manager/AlertManagerConfigmap.yaml &&
 sleep 5 &&
