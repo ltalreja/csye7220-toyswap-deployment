@@ -31,3 +31,6 @@ This repository contains the deployment config files for the following
 
 To create the cluster and deply the services 
 execute the create.sh script
+
+
+Note: To run this application you should have terrafrom and docker installed in the system
