@@ -33,4 +33,6 @@ To create the cluster and deply the services
 execute the create.sh script
 
 
-Note: To run this application you should have terrafrom and docker installed in the system
+Note: 
+To run this application you should have terrafrom and docker installed in the system
+The instructions provided for Kubectl Setup is according to Linux OS.
