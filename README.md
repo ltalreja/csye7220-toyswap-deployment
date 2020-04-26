@@ -34,5 +34,6 @@ execute the create.sh script
 
 
 Note: 
-To run this application you should have terrafrom and docker installed in the system
-The instructions provided for Kubectl Setup is according to Linux OS.
+To run this application you should have terrafrom and docker installed in the system.
+The instructions provided for Kubectl Setup is according to Linux OS. If you are using some other OS please make the changes to configure kube config according to the OS file system.
+Link: https://kubernetes.io/docs/home/
